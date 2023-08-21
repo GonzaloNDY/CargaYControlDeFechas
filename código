@@ -1,0 +1,37 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+fecha cargarFechaValida(){
+    fecha unaFecha;
+    char dia[MAX], mes[MAX], anio[MAX];
+
+    printf("\nDia: ");
+    do {
+        fgets(dia, MAX, stdin);
+        dia[strcspn(dia, "\n")] = '\0';
+        if (!strspn(dia, "1234567890") || atoi(dia) < 1 || atoi(dia) > 30)
+            printf("El día debe ser un número mayor que cero y menor o igual que 30, intente nuevamente: ");
+    } while (!strspn(dia, "1234567890") || atoi(dia) < 1 || atoi(dia) > 30);
+    unaFecha.dia = atoi(dia);
+
+    printf("Mes: ");
+    do {
+        fgets(mes, MAX, stdin);
+        mes[strcspn(mes, "\n")] = '\0';
+        if (!strspn(mes, "1234567890") || atoi(mes) < 1 || atoi(mes) > 12)
+            printf("El mes debe ser un número mayor que cero y menor o igual que 12, intente nuevamente: ");
+    } while (!strspn(mes, "1234567890") || atoi(mes) < 1 || atoi(mes) > 12);
+    unaFecha.mes = atoi(mes);
+
+    printf("Año: ");
+    do {
+        fgets(anio, MAX, stdin);
+        dia[strcspn(anio, "\n")] = '\0';
+        if (!strspn(anio, "1234567890") || atoi(anio) < 1 || atoi(anio) > anioActual)
+            printf("El año debe ser un número mayor que cero y menor o igual que %i, intente nuevamente: ", anioActual);
+    } while (!strspn(anio, "1234567890") || atoi(anio) < 1 || atoi(anio) > anioActual);
+    unaFecha.anio = atoi(anio);
+
+    return unaFecha;
+}
